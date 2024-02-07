@@ -9,8 +9,10 @@ import { db } from './db.js'
 //
 
 // Run everyday at 8:00 PM UTC - 4 hours before daily question changes
-cron.schedule('0 8 * * *', async () => {
-  await Promise.all(db.data.usernames.map(processUser))
+// cron.schedule('0 8 * * *', async () => {
+cron.schedule('* * * * * *', () => {
+  logger.info('got here')
+  // await Promise.all(db.data.usernames.map(processUser))
 }, { timezone: 'GMT' })
 
 const processUser = async (username: string): Promise<void> => {
