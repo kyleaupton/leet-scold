@@ -1,7 +1,7 @@
 import OpenAI from 'openai'
 import 'dotenv/config'
 
-export const getMessages = async (): Promise<void> => {
+export const generateHelpfulReminder = async (): Promise<string> => {
   if (process.env.OPENAI_API_KEY === undefined) {
     throw new Error('OPENAI_API_KEY is not set')
   }
@@ -22,7 +22,10 @@ export const getMessages = async (): Promise<void> => {
     model: 'gpt-3.5-turbo'
   })
 
-  console.log(res.choices[0].message.content)
-}
+  const message = res.choices[0].message.content
+  if (message === null) {
+    throw Error('Could not get message')
+  }
 
-await getMessages()
+  return message
+}
