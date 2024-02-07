@@ -1,4 +1,4 @@
-export const didSubmitToday = async (username: string): Promise<boolean> => {
+export const wasNotACompletePieceOfShitToday = async (username: string): Promise<boolean> => {
   const res = await fetch('https://leetcode.com/graphql/', {
     method: 'POST',
     headers: {

@@ -1,26 +1,24 @@
-import { didSubmitToday } from './leeetcode.js'
-
-// console.log(await didSubmitToday('kyleaupton'))
+import cron from 'node-cron'
+import { wasNotACompletePieceOfShitToday } from './leeetcode.js'
+import { generateHelpfulReminder } from './chatgpt.js'
+import { logger } from './logger.js'
+import { db } from './db.js'
 
 //
 // Main
 //
-// setInterval(() => {
-//   const now = new Date(new Date().toUTCString())
 
-//   if () {
+// Run everyday at 8:00 PM UTC - 4 hours before daily question changes
+cron.schedule('0 8 * * *', async () => {
+  await Promise.all(db.data.usernames.map(processUser))
+}, { timezone: 'GMT' })
 
-//   }
-// }, 1000 * 60) // 1 minute
+const processUser = async (username: string): Promise<void> => {
+  const submitted = await wasNotACompletePieceOfShitToday(username)
 
-const checkUsers = async (): Promise<void> => {
-  // const users = db.get('usernames').value()
-  const users = ['kyleaupton']
-
-  for (const username of users) {
-    const submitted = await didSubmitToday(username)
-    console.log(`${username} submitted today: ${submitted}`)
+  if (!submitted) {
+    // Genereate witty reminder and shove it down their throat
+    // const message = await generateHelpfulReminder()
+    // Send to some server...? Need to figure that out
   }
 }
-
-await checkUsers()
