@@ -31,7 +31,7 @@ const main = async (): Promise<void> => {
       const message = await generateHelpfulReminder()
       const channel = client.channels.cache.get(process.env.DISCORD_BOT_CHANNEL)
 
-      if (channel && channel.isTextBased()) {
+      if (channel?.isTextBased()) {
         logger.info(`Sending ${user.leetcodeId} a gentle reminder`)
         await channel.send({
           content: `<@${user.discordId}> ${message}`,
