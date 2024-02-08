@@ -16,7 +16,7 @@ export const generateHelpfulReminder = async (): Promise<string> => {
       },
       {
         role: 'user',
-        content: 'Can you write a mean and sarcastic message reminding me to do my daily leetcode problem? The message should be so mean that it makes me want to do it just to spite you.'
+        content: 'Can you write a mean and sarcastic text message reminding me to do my daily leetcode problem? The message should be so mean and condescending I want to do it to spite you. It should also be shorter, no more than 1000 characters.'
       }
     ],
     model: 'gpt-3.5-turbo'
