@@ -1,8 +1,11 @@
 import { JSONFilePreset } from 'lowdb/node'
 
-interface IData { usernames: string[] }
-const defaultData = { usernames: [] }
+export interface IUser { leetcodeId: string, discordId: string }
+export interface IData { users: IUser[] }
 
+const defaultData: IData = { users: [] }
 const db = await JSONFilePreset<IData>('db.json', defaultData)
+
+console.log(db)
 
 export { db }

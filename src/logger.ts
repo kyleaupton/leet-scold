@@ -11,7 +11,7 @@ const form = format.combine(
 )
 
 const logger = createLogger({
-  level: 'info',
+  level: 'debug',
   format: form,
   transports: [
     //

@@ -2,7 +2,7 @@ import OpenAI from 'openai'
 import 'dotenv/config'
 
 export const generateHelpfulReminder = async (): Promise<string> => {
-  if (process.env.OPENAI_API_KEY === undefined) {
+  if (!process.env.OPENAI_API_KEY) {
     throw new Error('OPENAI_API_KEY is not set')
   }
 
@@ -23,7 +23,7 @@ export const generateHelpfulReminder = async (): Promise<string> => {
   })
 
   const message = res.choices[0].message.content
-  if (message === null) {
+  if (!message) {
     throw Error('Could not get message')
   }
 
