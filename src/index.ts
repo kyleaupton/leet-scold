@@ -23,15 +23,16 @@ const main = async (): Promise<void> => {
   })
 
   const processUser = async (user: IUser): Promise<void> => {
+    logger.info(`Processing leetcode user ${user.leetcodeId}`)
     const submitted = await wasNotACompletePieceOfShitToday(user.leetcodeId)
 
     if (!submitted && process.env.DISCORD_BOT_CHANNEL) {
-      // Send message to user
-      // Genereate super helpful reminder and shove it down their throat
+      logger.info(`Oh boy, guess who was a piece of shit today? Yep it was ${user.leetcodeId}.`)
       const message = await generateHelpfulReminder()
       const channel = client.channels.cache.get(process.env.DISCORD_BOT_CHANNEL)
 
       if (channel && channel.isTextBased()) {
+        logger.info(`Sending ${user.leetcodeId} a gentle reminder`)
         await channel.send({
           content: `<@${user.discordId}> ${message}`,
           allowedMentions: { users: [user.discordId] }
