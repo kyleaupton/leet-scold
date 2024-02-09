@@ -1,5 +1,6 @@
 import OpenAI from 'openai'
 import { fetchDailyProblem } from './leeetcode.js'
+import { logger } from './logger.js'
 import 'dotenv/config'
 
 export const generateHelpfulReminder = async (): Promise<string> => {
@@ -8,6 +9,7 @@ export const generateHelpfulReminder = async (): Promise<string> => {
   }
 
   const openai = new OpenAI()
+  const model = process.env.CHAT_MODEL ?? 'gpt-3.5-turbo'
 
   const problemText = await fetchDailyProblem()
 
@@ -19,16 +21,18 @@ export const generateHelpfulReminder = async (): Promise<string> => {
       },
       {
         role: 'user',
-        content: `Today's daily problem is ${problemText}. Explain the problem condescendlingly to a 5 year old.`
+        content: `Today's daily problem is ${problemText}. Explain the problem condescendlingly to a 5 year old. Ignore constraints.`
       }
     ],
-    model: 'gpt-3.5-turbo'
+    model
   })
 
   const message = res.choices[0].message.content
   if (!message) {
     throw Error('Could not get message')
   }
+
+  logger.info(`Generated message using ${model}`)
 
   return message
 }
