@@ -1,3 +1,3 @@
-import { generateHelpfulReminder } from './chatgpt.js'
+import { fetchDailyProblem } from './leeetcode.js'
 
-console.log(await generateHelpfulReminder())
+console.log(await fetchDailyProblem())

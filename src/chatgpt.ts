@@ -1,4 +1,5 @@
 import OpenAI from 'openai'
+import { fetchDailyProblem } from './leeetcode.js'
 import 'dotenv/config'
 
 export const generateHelpfulReminder = async (): Promise<string> => {
@@ -8,15 +9,17 @@ export const generateHelpfulReminder = async (): Promise<string> => {
 
   const openai = new OpenAI()
 
+  const problemText = await fetchDailyProblem()
+
   const res = await openai.chat.completions.create({
     messages: [
       {
         role: 'system',
-        content: 'You are a helpful assistant.'
+        content: 'You are a helpful assistant. Deliver a mean, vulgar, and sarcastic message reminding a user to do their daily leetcode problem. Use curse words. The message should be so mean and condescending that the user wants to do it to spite you. It should be no more than 1000 characters. Below is the daily leetcode problem provided in HTML format. Incorporate the problem into your message'
       },
       {
         role: 'user',
-        content: 'Can you write a mean and sarcastic text message reminding me to do my daily leetcode problem? The message should be so mean and condescending I want to do it to spite you. It should also be shorter, no more than 1000 characters.'
+        content: `Today's daily problem is ${problemText}. Explain the problem condescendlingly to a 5 year old.`
       }
     ],
     model: 'gpt-3.5-turbo'

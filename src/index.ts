@@ -42,7 +42,7 @@ const main = async (): Promise<void> => {
   }
 
   // Test process
-  // await processUser(db.data.users[0])
+  await processUser(db.data.users[0])
 }
 
 await main()
