@@ -13,9 +13,10 @@ const main = async (): Promise<void> => {
   setupProcessCleanup()
   const client = await initializeDiscord()
 
-  // Run everyday at 8:00 PM UTC - 4 hours before daily question changes
+  // Run everyday at 9:00 PM UTC / 4:00 PM EST
   const rule = new schedule.RecurrenceRule()
-  rule.hour = 8
+  rule.hour = 21
+  rule.minute = 0
   rule.tz = 'Etc/UTC'
 
   schedule.scheduleJob(rule, async () => {
