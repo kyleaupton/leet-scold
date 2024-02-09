@@ -1,6 +1,6 @@
 import OpenAI from 'openai'
 import { config } from 'dotenv'
-import { fetchDailyProblem } from './leeetcode.js'
+import { fetchDailyProblem } from './leetcode.js'
 import { logger } from './logger.js'
 import { envPath } from './utils.js'
 

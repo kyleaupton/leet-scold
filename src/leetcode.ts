@@ -39,7 +39,6 @@ export const fetchDailyProblem = async (): Promise<string> => {
   })
 
   const dailyLink = (await linkRes.json()).data.activeDailyCodingChallengeQuestion.link
-
   const problemName = dailyLink.split('/')[2]
 
   const questionRes = await fetch('https://leetcode.com/graphql/', {

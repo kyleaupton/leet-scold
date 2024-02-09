@@ -1,5 +1,5 @@
 import schedule from 'node-schedule'
-import { wasNotACompletePieceOfShitToday } from './leeetcode.js'
+import { wasNotACompletePieceOfShitToday } from './leetcode.js'
 import { generateHelpfulReminder } from './chatgpt.js'
 import { initializeDiscord } from './discord.js'
 import { logger } from './logger.js'
