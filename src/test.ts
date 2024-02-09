@@ -1,3 +1,3 @@
-import { fetchDailyProblem } from './leeetcode.js'
+import { fetchDailyProblem } from './leetcode.js'
 
 console.log(await fetchDailyProblem())
