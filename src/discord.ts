@@ -33,4 +33,9 @@ export const initializeDiscord = async (): Promise<Client> => {
   return client
 }
 
+export const destroyDiscord = async (): Promise<void> => {
+  await client?.destroy()
+  logger.info('Destroyed discord client')
+}
+
 export { client }

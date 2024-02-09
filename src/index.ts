@@ -4,12 +4,13 @@ import { generateHelpfulReminder } from './chatgpt.js'
 import { initializeDiscord } from './discord.js'
 import { logger } from './logger.js'
 import { db, type IUser } from './db.js'
+import { setupProcessCleanup } from './process.js'
 
 //
 // Main
 //
 const main = async (): Promise<void> => {
-  // Initialize Discord client
+  setupProcessCleanup()
   const client = await initializeDiscord()
 
   // Run everyday at 8:00 PM UTC - 4 hours before daily question changes
