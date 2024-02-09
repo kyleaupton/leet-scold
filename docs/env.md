@@ -1,5 +1,7 @@
 # Enviroment settings
 
+Env location: `data/.env`
+
 ```
 OPENAI_API_KEY=""
 DISCORD_BOT_ID=""
