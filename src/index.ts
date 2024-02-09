@@ -42,6 +42,9 @@ const main = async (): Promise<void> => {
       }
     }
   }
+
+    processUser(db.data.users[1])
+
 }
 
 await main()

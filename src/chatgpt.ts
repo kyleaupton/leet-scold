@@ -3,6 +3,8 @@ import { config } from 'dotenv'
 import { fetchDailyProblem } from './leetcode.js'
 import { logger } from './logger.js'
 import { envPath } from './utils.js'
+import { prompts } from './prompts.js'
+
 
 config({ path: envPath() })
 
@@ -15,17 +17,16 @@ export const generateHelpfulReminder = async (): Promise<string> => {
   const model = process.env.CHAT_MODEL ?? 'gpt-3.5-turbo'
 
   const problemText = await fetchDailyProblem()
+  const prompt = prompts.default(problemText)
+  console.log(prompt)
 
   const res = await openai.chat.completions.create({
     messages: [
       {
         role: 'system',
-        content: 'You are a helpful assistant. Deliver a mean, vulgar, and sarcastic message reminding a user to do their daily leetcode problem. Use curse words. The message should be so mean and condescending that the user wants to do it to spite you. It should be no more than 1000 characters. Below is the daily leetcode problem provided in HTML format. Incorporate the problem into your message'
-      },
-      {
-        role: 'user',
-        content: `Today's daily problem is ${problemText}. Explain the problem condescendlingly to a 5 year old. Ignore constraints.`
-      }
+        content: 'You are a helpful assistant. Your role is to provide reminders to users who have not done their daily leetcode problem.'
+      }, 
+      prompt
     ],
     model
   })
