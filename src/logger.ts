@@ -1,4 +1,6 @@
+import path from 'path'
 import { createLogger, format, transports } from 'winston'
+import { projectPath } from './utils.js'
 
 const form = format.combine(
   format.simple(),
@@ -18,8 +20,8 @@ const logger = createLogger({
     // - Write to all logs with level `info` and below to `out.log`.
     // - Write all logs error (and below) to `error.log`.
     //
-    new transports.File({ filename: 'error.log', level: 'error' }),
-    new transports.File({ filename: 'out.log' })
+    new transports.File({ filename: path.join(projectPath(), 'data', 'error.log'), level: 'error' }),
+    new transports.File({ filename: path.join(projectPath(), 'data', 'out.log') })
   ]
 })
 

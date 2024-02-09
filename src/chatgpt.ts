@@ -1,7 +1,10 @@
 import OpenAI from 'openai'
+import { config } from 'dotenv'
 import { fetchDailyProblem } from './leeetcode.js'
 import { logger } from './logger.js'
-import 'dotenv/config'
+import { envPath } from './utils.js'
+
+config({ path: envPath() })
 
 export const generateHelpfulReminder = async (): Promise<string> => {
   if (!process.env.OPENAI_API_KEY) {

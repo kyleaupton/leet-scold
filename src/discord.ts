@@ -1,6 +1,9 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js'
+import { config } from 'dotenv'
 import { logger } from './logger.js'
-import 'dotenv/config'
+import { envPath } from './utils.js'
+
+config({ path: envPath() })
 
 let client: Client | undefined
 
