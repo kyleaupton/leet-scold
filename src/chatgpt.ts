@@ -17,7 +17,6 @@ export const generateHelpfulReminder = async (): Promise<string> => {
 
   const problemText = await fetchDailyProblem()
   const prompt = prompts.default(problemText)
-  console.log(prompt)
 
   const res = await openai.chat.completions.create({
     messages: [
