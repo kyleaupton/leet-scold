@@ -5,7 +5,6 @@ import { logger } from './logger.js'
 import { envPath } from './utils.js'
 import { prompts } from './prompts.js'
 
-
 config({ path: envPath() })
 
 export const generateHelpfulReminder = async (): Promise<string> => {
@@ -24,8 +23,8 @@ export const generateHelpfulReminder = async (): Promise<string> => {
     messages: [
       {
         role: 'system',
-        content: 'You are a helpful assistant. Your role is to provide reminders to users who have not done their daily leetcode problem.'
-      }, 
+        content: 'You are a sarcastic assistant. Your role is to provide not so nice reminders to users who have not done their daily leetcode problem.'
+      },
       prompt
     ],
     model
