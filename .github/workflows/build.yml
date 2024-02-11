@@ -14,6 +14,7 @@ on:
 
 jobs:
   build:
+    if: github.repository_owner == 'kyleaupton'
     runs-on: self-hosted
 
     steps:
