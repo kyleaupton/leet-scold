@@ -13,7 +13,7 @@ export const generateHelpfulReminder = async (): Promise<string> => {
   }
 
   const openai = new OpenAI()
-  const model = process.env.CHAT_MODEL ?? 'gpt-3.5-turbo'
+  const model = process.env.CHAT_MODEL ?? 'gpt-4'
 
   const problemText = await fetchDailyProblem()
   const prompt = prompts.default(problemText)
