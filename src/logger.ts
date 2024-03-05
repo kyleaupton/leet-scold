@@ -4,7 +4,7 @@ import { projectPath } from './utils.js'
 
 const form = format.combine(
   format.simple(),
-  format.label({ label: 'leetcode-reminder' }),
+  format.label({ label: 'leet-scold' }),
   format.timestamp(),
   format.errors({ stack: 'true' }),
   format.printf(({ level, message, label, timestamp }) => {

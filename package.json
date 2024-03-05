@@ -1,5 +1,5 @@
 {
-  "name": "leetcode-reminder",
+  "name": "leet-scold",
   "version": "0.0.1",
   "description": "A Discord bot to berate all who don't do their daily leetcode question",
   "type": "module",
