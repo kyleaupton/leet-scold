@@ -1,6 +1,6 @@
-# leetcode-reminder
+# leet-scold
 
-Welcome to leetcode-reminder, the Discord bot that's here to make your life just a little bit more miserable. 
+Welcome to leet-scold, the Discord bot that's here to make your life just a little bit more miserable. 
 
 ## What does it do?
 
